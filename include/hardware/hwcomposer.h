@@ -81,6 +81,20 @@ typedef struct hwc_methods {
     int (*eventControl)(
             struct hwc_composer_device* dev, int event, int value);
 
+     /*************************************************************************
+     * HWC_DEVICE_API_VERSION_0_3_STE
+     *************************************************************************/
+
+    /*
+     * This hook is vendor specific and optional.
+     *
+     * (*setParameter)() makes the hardware composer aware of the system state,
+     * e.g. hdmi plug status and ui rotation, so that it can make intelligent
+     * decisions on how to handle composed surfaces and cloning in the kernel.
+     */
+    int (*setParameter)(struct hwc_composer_device* dev,
+                int param, int value);
+
 } hwc_methods_t;
 
 typedef struct hwc_rect {
